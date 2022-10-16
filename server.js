@@ -21,7 +21,26 @@ const connect = async () => {
     console.log("mongoDB connected!");
   });
   
- 
+  app.get("/",function(req,res){
+      
+    res.sendFile(__dirname+"/public.html");
+    
+     
+    
+    })
+    
+    app.post("/",function(req,res){
+    
+     var user = new userModel({
+      name: req.body.uname
+       });
+  
+      user.save();
+      
+      res.send("<h1>Your username '"+req.body.uname+"' has been stored in the DB. </h1>")
+     
+    
+    })
     
     app.listen(3000, () => {
       connect();
