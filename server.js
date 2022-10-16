@@ -9,9 +9,10 @@ import userModel from './model/users.js';
 var router = express.Router();
 var user = userModel.find({});
 
-const _dirname = path.dirname(_filename);
+const __dirname = path.dirname(__filename);
 const app = express();
 dotenv.config();
+app.use(bodyParser.urlencoded({extended:true}))
 
 const connect = async () => {
     try {
@@ -32,7 +33,7 @@ const connect = async () => {
   
   app.get("/",function(req,res){
       
-    res.sendFile(__dirname+"/public.html");
+    res.sendFile(__dirname+"/index.html");
     
      
     
